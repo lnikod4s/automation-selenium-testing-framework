@@ -49,9 +49,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DashboardPage.cs" />
+    <Compile Include="Pages\DashboardPage.cs" />
     <Compile Include="Driver.cs" />
-    <Compile Include="LoginPage.cs" />
+    <Compile Include="Pages\ListPostPage.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\NewPostPage.cs" />
+    <Compile Include="Pages\PostPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

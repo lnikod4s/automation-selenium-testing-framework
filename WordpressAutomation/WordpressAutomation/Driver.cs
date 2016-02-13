@@ -12,7 +12,7 @@ namespace WordpressAutomation
         {
             Instance = new FirefoxDriver();
             Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
-            Instance.Manage().Window.Maximize();           
+            Instance.Manage().Window.Maximize();
         }
     }
 }
