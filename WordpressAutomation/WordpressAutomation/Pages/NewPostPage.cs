@@ -1,4 +1,4 @@
-﻿using System.Threading;
+﻿using System;
 using OpenQA.Selenium;
 
 namespace WordpressAutomation
@@ -21,11 +21,7 @@ namespace WordpressAutomation
 
         public static void GoTo()
         {
-            var menuPosts = Driver.Instance.FindElements(By.ClassName("wp-menu-name"))[1];
-            menuPosts.Click();
-
-            var addNew = Driver.Instance.FindElement(By.LinkText("Add New"));
-            addNew.Click();
+            LeftNavigation.Posts.AddNew.Select();
         }
 
         public static CreatePostCommand CreatePost(string title)
@@ -64,12 +60,12 @@ namespace WordpressAutomation
 
         public void Publish()
         {
-            Driver.Instance.FindElement(By.Id("title-prompt-text")).SendKeys(this.title);
+            Driver.Instance.FindElement(By.Id("title-prompt-text")).SendKeys(title);
             Driver.Instance.SwitchTo().Frame("content_ifr");
-            Driver.Instance.SwitchTo().ActiveElement().SendKeys(this.body);
+            Driver.Instance.SwitchTo().ActiveElement().SendKeys(body);
             Driver.Instance.SwitchTo().DefaultContent();
 
-            Thread.Sleep(1000);
+            Driver.Wait(TimeSpan.FromSeconds(1));
 
             Driver.Instance.FindElement(By.Id("publish")).Click();
         }

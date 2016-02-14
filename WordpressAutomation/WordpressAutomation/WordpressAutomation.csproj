@@ -49,8 +49,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Navigation\MenuSelector.cs" />
     <Compile Include="Pages\DashboardPage.cs" />
-    <Compile Include="Driver.cs" />
+    <Compile Include="Selenium\Driver.cs" />
+    <Compile Include="Navigation\LeftNavigation.cs" />
     <Compile Include="Pages\ListPostPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\NewPostPage.cs" />
