@@ -61,11 +61,11 @@ namespace WordpressAutomation
         public void Publish()
         {
             Driver.Instance.FindElement(By.Id("title")).SendKeys(title);
-            Driver.Instance.SwitchTo().Frame("content_ifr");
+            Driver.NoWait(() => Driver.Instance.SwitchTo().Frame("content_ifr"));
             Driver.Instance.SwitchTo().ActiveElement().SendKeys(body);
-            Driver.Instance.SwitchTo().DefaultContent();
+            Driver.NoWait(() => Driver.Instance.SwitchTo().DefaultContent());
 
-            Driver.Wait(TimeSpan.FromSeconds(2));
+            Driver.Wait(TimeSpan.FromSeconds(1));
 
             Driver.Instance.FindElement(By.Id("publish")).Click();
         }

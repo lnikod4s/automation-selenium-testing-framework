@@ -3,7 +3,7 @@ using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
-namespace WordpressAutomation.Pages
+namespace WordpressAutomation
 {
     public class ListPostPage
     {
@@ -22,6 +22,20 @@ namespace WordpressAutomation.Pages
             get
             {
                 return GetPostCount();
+            }
+        }
+
+        public static bool IsAt
+        {
+            get
+            {
+                var h1s = Driver.Instance.FindElements(By.TagName("h1"));
+                if (h1s.Count > 0)
+                {
+                    return h1s[0].Text == "Posts";
+                }
+
+                return false;
             }
         }
 
@@ -44,11 +58,21 @@ namespace WordpressAutomation.Pages
 
         public static void StoreCount()
         {
+            if (!IsAt)
+            {
+                GoTo(PostType.Posts);
+            }
+
             lastCount = GetPostCount();
         }
 
         private static int GetPostCount()
         {
+            if (!IsAt)
+            {
+                GoTo(PostType.Posts);
+            }
+
             var countText = Driver.Instance.FindElement(By.ClassName("displaying-num")).Text;
             return int.Parse(countText.Split(' ')[0]);
         }
@@ -70,7 +94,7 @@ namespace WordpressAutomation.Pages
             foreach (var row in rows)
             {
                 ReadOnlyCollection<IWebElement> links = null;
-                links = row.FindElements(By.LinkText(title));
+                Driver.NoWait(() => links = row.FindElements(By.LinkText(title)));
                 if (links.Count > 0)
                 {
                     Actions action = new Actions(Driver.Instance);
@@ -80,6 +104,17 @@ namespace WordpressAutomation.Pages
                     return;
                 }
             }
+        }
+
+        public static void SearchForPost(string title)
+        {
+            if (!IsAt)
+            {
+                GoTo(PostType.Posts);
+            }
+
+            Driver.Instance.FindElement(By.Id("post-search-input")).SendKeys(title);
+            Driver.Instance.FindElement(By.Id("search-submit")).Click();
         }
     }
 

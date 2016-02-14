@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WordpressAutomation;
-using WordpressAutomation.Pages;
 
 namespace WordpressTests
 {
