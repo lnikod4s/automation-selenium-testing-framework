@@ -5,7 +5,7 @@ using WordpressAutomation.Pages;
 namespace WordpressTests.AllPostsTests
 {
     [TestClass]
-    public class AllPostsTests
+    public class AllPostsTests : BaseTest
     {
         [TestMethod]
         public void AddedPostsShowUp()

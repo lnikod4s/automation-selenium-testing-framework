@@ -60,12 +60,12 @@ namespace WordpressAutomation
 
         public void Publish()
         {
-            Driver.Instance.FindElement(By.Id("title-prompt-text")).SendKeys(title);
+            Driver.Instance.FindElement(By.Id("title")).SendKeys(title);
             Driver.Instance.SwitchTo().Frame("content_ifr");
             Driver.Instance.SwitchTo().ActiveElement().SendKeys(body);
             Driver.Instance.SwitchTo().DefaultContent();
 
-            Driver.Wait(TimeSpan.FromSeconds(1));
+            Driver.Wait(TimeSpan.FromSeconds(2));
 
             Driver.Instance.FindElement(By.Id("publish")).Click();
         }

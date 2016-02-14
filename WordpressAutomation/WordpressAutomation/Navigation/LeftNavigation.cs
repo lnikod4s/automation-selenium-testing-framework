@@ -8,7 +8,15 @@
             {
                 public static void Select()
                 {
-                    MenuSelector.Select("wp-menu-name", "Add New");
+                    MenuSelector.Select("menu-posts", "Add New");
+                }
+            }
+
+            public class AllPosts
+            {
+                public static void Select()
+                {
+                    MenuSelector.Select("menu-posts", "All Posts");
                 }
             }
         }

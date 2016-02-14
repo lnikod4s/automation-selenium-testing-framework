@@ -17,8 +17,8 @@ namespace WordpressAutomation
         public static void Initialize()
         {
             Instance = new FirefoxDriver();
-            Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
-            Instance.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(20));
+            Instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(2));
+            Instance.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(5));
             Instance.Manage().Window.Maximize();
         }
 

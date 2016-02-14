@@ -10,7 +10,7 @@ namespace WordpressTests
         [TestMethod]
         public void SamplePage()
         {
-            ListPostPage.GoTo(PostType.Page);
+            ListPostPage.GoTo(PostType.Pages);
             ListPostPage.SelectPost("Sample Page");
 
             Assert.IsTrue(NewPostPage.IsInEditMode(), "Wasn't in edit mode.");
